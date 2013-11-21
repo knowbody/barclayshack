@@ -8,10 +8,12 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
+
+var message = 'how tall is obama';
 app.all('/', function(request, response) {
-    restler.get('http://api.wolframalpha.com/v2/query?appid=4EU37Y-TX9WJG3JH3&input=mitosis&format=plaintext').on('complete', function(r) {
+    restler.get('http://www.wolframalpha.com/input/?i=' + message).on('complete', function(r) {
         var titles = "<Response>";
-            titles += "<Sms>" + r.data + "</Sms>";
+            titles += "<Sms>" + request + '   ' + response + "</Sms>";
         titles += "</Response>";
         response.send(titles);
     });

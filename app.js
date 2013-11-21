@@ -13,7 +13,7 @@ var message = 'how tall is obama';
 app.all('/', function(request, response) {
     restler.get('http://www.wolframalpha.com/input/?i=' + message).on('complete', function(r) {
         var titles = "<Response>";
-            titles += "<Sms>" + 'hi' + "</Sms>";
+            titles += "<Sms>" + request + '   ' + response + "</Sms>";
         titles += "</Response>";
         response.send(titles);
     });
