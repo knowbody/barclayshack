@@ -17,10 +17,18 @@ wolfram.query("What is mitosis?", function (err, result) {
   if (err) throw err;
   console.log("- %j",result);
   if(result[1].subpods[0]){
-   response.send(result[1].subpods[0].text);
+	var titles = "<Response>";
+            titles += "<Sms>" + result[1].subpods[0].text + "</Sms>";
+        titles += "</Response>";
+        response.send(titles);
    }else{
-   response.send(result[0].subpods[0].text);
+	var titles = "<Response>";
+            titles += "<Sms>" + result[0].subpods[0].text + "</Sms>";
+        titles += "</Response>";
+        response.send(titles);
    }
 });
 
 });
+
+
