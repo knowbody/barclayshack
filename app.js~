@@ -3,18 +3,24 @@ var app = express();
 app.use(express.logger());
 var restler = require('restler');
 
+  var wolfram = require('wolfram-alpha').createClient("4EU37Y-TX9WJG3JH3", null);
+
+var XmlDocument = require('./node_modules/xmldoc/lib/xmldoc.js').XmlDocument;
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-
-var message = 'how tall is obama';
 app.all('/', function(request, response) {
-    restler.get('http://www.wolframalpha.com/input/?i=' + message).on('complete', function(r) {
-        var titles = "<Response>";
-            titles += "<Sms>" + request + '   ' + response + "</Sms>";
-        titles += "</Response>";
-        response.send(titles);
-    });
+  
+wolfram.query("What is mitosis?", function (err, result) {
+  if (err) throw err;
+  console.log("- %j",result);
+  if(result[1].subpods[0]){
+   response.send(result[1].subpods[0].text);
+   }else{
+   response.send(result[0].subpods[0].text);
+   }
+});
+
 });
