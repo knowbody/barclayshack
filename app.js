@@ -5,7 +5,7 @@ var restler = require('restler');
 
   var wolfram = require('wolfram-alpha').createClient("4EU37Y-TX9WJG3JH3", null);
 
-var XmlDocument = require('./node_modules/xmldoc/lib/xmldoc.js').XmlDocument;
+
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);
