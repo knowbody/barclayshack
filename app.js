@@ -12,7 +12,7 @@ app.listen(port, function() {
 });
 
 app.all('/', function(request, response) {
-console.log("- "+request.body);
+console.log("************************-******************** "+request.body + " " + request.url);
 
 
     if (request.method == 'POST') {
@@ -23,7 +23,7 @@ console.log("- "+request.body);
         request.on('end', function () {
 
             var POST = qs.parse(body);
-           console.log("->?" + POST);
+           console.log("*************************2**********************->?" + POST);
 
         });
     }
