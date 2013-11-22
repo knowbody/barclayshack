@@ -3,6 +3,7 @@ var app = express();
 app.use(express.logger());
 var restler = require('restler');
 var qs = require('querystring');
+var url = require('url');
 
   var wolfram = require('wolfram-alpha').createClient("4EU37Y-TX9WJG3JH3", null);
 
@@ -12,25 +13,12 @@ app.listen(port, function() {
 });
 
 app.all('/', function(request, response) {
-console.log("************************-******************** "+request.body + " " + request.url);
 
+var url_parts = url.parse(request.url, true);
+var query = url_parts.query;
+console.log("--"+query);
 
-    if (request.method == 'POST') {
-        var body = '';
-        request.on('data', function (data) {
-            body += data;
-        });
-        request.on('end', function () {
-
-            var POST = qs.parse(body);
-           console.log("*************************2**********************->?" + POST);
-
-        });
-    }
-
-
-
-wolfram.query("What is mitosis?", function (err, result) {
+wolfram.query(query.body, function (err, result) {
   if (err) throw err;
   console.log("- %j",result);
   if(result[1].subpods[0]){
