@@ -23,7 +23,7 @@ var q = query.body;
 wolfram.query(q, function (err, result) {
   if (err) throw err;
   console.log("- %j",result);
-if(result[1]){
+if(result[0] || result[1]){
   if(result[1].subpods[0]){
    response.send("<Response><Sms>" +result[1].subpods[0].text+ "</Sms></Response>");
    }else{
