@@ -9,20 +9,20 @@ var url = require('url');
 
 var port = process.env.PORT || 5001;
 app.listen(port, function() {
-  console.log("Listening on " + port);
+//  console.log("Listening on " + port);
 });
 
 app.all('/', function(request, response) {
 	
 var url_parts = url.parse(request.url, true);
 var query = url_parts.query;
-console.log("--*-*********************************"+query.Body+"");
+//console.log("--*-*********************************"+query.Body+"");
 
 
 var q = query.Body;
 wolfram.query(q, function (err, result) {
   if (err) throw err;
-  console.log("- %j",result);
+//  console.log("- %j",result);
   
 if(result.length){
 	if(result[1]){
@@ -35,7 +35,7 @@ if(result[1].subpods[0]){
  response.send("<Response><Sms>" +result[0].subpods[0].text+ "</Sms></Response>");
 }
 }else{
- response.send("<Response><Sms>Sorry</Sms></Response>");
+ response.send("<Response><Sms>I'm sorry I don't know, please ask your teacher.</Sms></Response>");
 }
 
 });

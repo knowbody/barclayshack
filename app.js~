@@ -35,7 +35,7 @@ if(result[1].subpods[0]){
  response.send("<Response><Sms>" +result[0].subpods[0].text+ "</Sms></Response>");
 }
 }else{
- response.send("<Response><Sms>Sorry</Sms></Response>");
+ response.send("<Response><Sms>I'm sorry I don't know, please ask your teacher.</Sms></Response>");
 }
 
 });
