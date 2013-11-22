@@ -13,10 +13,10 @@ app.listen(port, function() {
 });
 
 app.all('/', function(request, response) {
-console.log("- "+request.body);
+	
 var url_parts = url.parse(request.url, true);
 var query = url_parts.query;
-console.log("--"+query);
+console.log("--"+query.body);
 
 wolfram.query(query.body, function (err, result) {
   if (err) throw err;
