@@ -27,7 +27,7 @@ wolfram.query(q, function (err, result) {
 if(result.length){
 	if(result[1]){
 if(result[1].subpods[0]){
-   response.send("<Response><Sms>" +result[1].subpods[0].text+ "</Sms></Response>");
+   response.send("<Response><Say voice=\"woman\">" +result[1].subpods[0].text+ "</Say></Response>");
 } else{
    response.send("<Response><Sms>" +result[0].subpods[0].text+ "</Sms></Response>");
   }
