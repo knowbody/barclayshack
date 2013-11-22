@@ -16,10 +16,10 @@ app.all('/', function(request, response) {
 	
 var url_parts = url.parse(request.url, true);
 var query = url_parts.query;
-console.log("--*-*********************************"+query.body+"");
+console.log("--*-*********************************"+query.Body+"");
 
 
-var q = query.body;
+var q = query.Body;
 wolfram.query(q, function (err, result) {
   if (err) throw err;
   console.log("- %j",result);
